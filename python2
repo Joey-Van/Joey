@@ -1,0 +1,100 @@
+#随机密码生成。编写程序在26个字母大小写和9个数字组成的列表中随机生成10个8位密码。
+    import random
+    def random_password():
+        list1 = []
+        #把字母加入序列中
+        for i in range(65,90):
+            list1.append(chr(i))
+        for i in range(97,122):
+            list1.append(chr(i))
+            
+        list2 = [1,2,3,4,5,6,7,8,9]
+        list = list1 +list2
+        n = 0
+        while n < 10:
+            password = []
+            n = n + 1
+            m = 0
+            password = password + random.sample(list, 8)
+            #把列表转化为字符串
+            password_middle = [str(i) for i in password]
+            password_end = ''.join(password_middle)
+            
+            print("第{}个随机生成的密码是：{}".format(n,password_end))
+        
+
+random_password()
+
+#random.sample(seq, k)实现从序列或集合seq中随机选取k个独立的的元素
+#random.randint(a, b)   #A-Z:65-90;a-z：97-122;ASCII码48～57为0到9十个阿拉伯数字
+
+#python重读元素判断
+words = input("请输入一段字符串：")
+word = input("请输入一个字符：")
+# print(dir(words))
+if word in words:
+    # nt[word] = count.get(word, 0) + 1
+    # items = list(count.items())
+    if words.count(word)>1:
+        print(True)
+
+
+
+#基本温度转化程序
+TempStr = input("请输入带有符号的温度值: ")
+if TempStr[-1] in ['F','f']:
+    C = (eval(TempStr[0:-1]) - 32)/1.8
+    print("转换后的温度是{:.2f}C".format(C))
+elif TempStr[-1] in ['C','c']:
+    F = 1.8*eval(TempStr[0:-1]) + 32
+    print("转换后的温度是{:.2f}F".format(F))
+else:
+    print("输入格式错误")
+
+
+
+
+#函数分装基本温度转化
+def tempConvert(ValueStr):
+    if ValueStr[-1] in ['F','f']:
+        C = (eval(ValueStr[0:-1]) - 32)/1.8
+        print("转换后的温度是{:.2f}C".format(C))
+    elif ValueStr[-1] in ['C','c']:
+        F = 1.8*eval(ValueStr[0:-1]) + 32
+        print("转换后的温度是{:.2f}F".format(F))
+    else:
+        print("输入格式错误")
+TempStr = input("请输入带有符号的温度值: ")
+tempConvert(TempStr)
+
+
+
+#循环执行温度转换
+TempStr = input("请输入带有符号的温度值: ")
+while TempStr[-1] not in ['N','n']:
+    if TempStr[-1] in ['F','f']:
+        C = (eval(TempStr[0:-1]) - 32)/1.8
+        print("转换后的温度是{:.2f}C".format(C))
+    elif TempStr[-1] in ['C','c']:
+        F = 1.8*eval(TempStr[0:-1]) + 32
+        print("转换后的温度是{:.2f}F".format(F))
+    else:
+        print("输入格式错误")
+    TempStr = input("请输入带有符号的温度。")
+
+
+
+#一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。
+def frog(num):
+
+　　　　if num <= 2:
+　　　　　　return num
+　　　　t1, t2 = 1, 2
+　　　　for _ in range(3, num+1):
+　　　　　　t1, t2 = t2, t1+t2
+　　　　return t2
+
+
+
+
+
