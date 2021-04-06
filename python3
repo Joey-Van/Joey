@@ -1,0 +1,89 @@
+#基本的多行文本进度条
+import time
+scale = 20
+print("------执行开始------")
+for i in range(scale+1):
+    a, b = '**' * i,'..' * (scale - i)
+    c = (i/scale)*100
+    print("%{:^3.0f}[{}->{}]" .format (c, a, b))
+    time.sleep(0.1)
+print("------执行结束------")
+
+
+
+
+#单行动态刷新
+import time
+for i in range(101):
+    print("\r{:2}%".format(i), end="")
+    time.sleep(0.05)
+
+
+
+
+#对齐填充方式
+s = "python"
+"{0:30}".format(s)
+"{0:>30}".format(s)
+"{0:*^30}".format(s)
+"{0:3}".format(s)
+
+
+
+#小数点余位
+"{0:.2f}".format(12345.67890)
+"{0:H^20.3f}".format(12345.67890)
+
+
+
+#二，八，十，十六机制
+"{0:b},{0:c},{0:d}".foramt(425)
+
+
+
+
+#format使用方法
+"{}:计算机{}的CPU占用率为{}%。".format{"2016-12-31","PYTHON",10}
+
+
+
+
+#凯撒密码
+plaincode = input("请输入明文: ")
+for p in plaincode:
+    if ord("a") <= ord(p) <= ord("z"):
+        print(chr(ord("a") + (ord(p) - ord("a") + 3)%26),end='')
+    else:
+        print(p, end='')
+
+
+
+
+#获取星期字符串
+weekstr = "星期一星期二星期三星期四星期五星期六星期日"
+weekid = eval(input("请输入星期数字(1-7): "))
+pos = (weekid - 1)*3
+print(weekstr[pos: pos+3])
+
+
+
+
+
+#math 库的使用
+import math
+from math import floor
+
+
+
+
+#天天向上的力量
+import math
+dayup = math.pow((1.0 + 0.001), 365) # 每天提高0.001
+daydown = math.pow((1.0 - 0.001), 365) # 每天荒废0.001
+print("向上: %.2f, 向下: %.2f."%(dayup, daydown))
+
+#天天向上
+dayfactor = 0.01
+dayup = math.pow((1.0 + dayfactor), 365) # 提高dayfactor
+daydown = math.pow((1.0 - dayfactor), 365) # 放任dayfactor
+print("向上: {:.2f}, 向下: {:.2f}.".format(dayup, daydown))
